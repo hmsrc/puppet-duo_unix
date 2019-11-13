@@ -35,6 +35,7 @@ class duo_unix::yum {
     baseurl  => "${repo_uri}/${os}/${releasever}/\$basearch",
     gpgcheck => '1',
     enabled  => '1',
+    gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-DUO',
     require  => File['/etc/pki/rpm-gpg/RPM-GPG-KEY-DUO'];
   }
 
@@ -55,4 +56,3 @@ class duo_unix::yum {
   }
 
 }
-

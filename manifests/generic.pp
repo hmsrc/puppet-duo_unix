@@ -19,7 +19,7 @@ class duo_unix::generic {
     owner  => 'root',
     group  => 'root',
     mode   => '0644',
-    source => 'puppet:///modules/duo_unix/GPG-KEY-DUO',
+    source => 'puppet:///modules/duo_unix/DUO-GPG-PUBLIC-KEY.asc',
     notify => Exec['Duo Security GPG Import'];
   }
 

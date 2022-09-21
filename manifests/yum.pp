@@ -18,15 +18,12 @@ class duo_unix::yum {
       default => undef,
     }
     $os = $::operatingsystem
-  } elsif ( $::operatingsystem == 'RedHat' and
-            $::operatingsystemmajrelease == 5 ) {
-    $os = 'centos'
-  } elsif ( $::operatingsystem == 'RedHat' ) {
+  } elsif ( $::osfamily == 'RedHat' ) {
       if $facts['os']['distro']['id'] == 'Rocky' {
         $os = 'rocky'
+      } else {
+        $os = 'centos'
       }
-  } elsif ( $::operatingsystem == 'OracleLinux' ) {
-    $os = 'centos'
   } else {
     $os = $::operatingsystem
   }

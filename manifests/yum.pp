@@ -18,21 +18,23 @@ class duo_unix::yum {
       default => undef,
     }
     $os = $::operatingsystem
-  } elsif ( $::operatingsystem == 'RedHat' and
-            $::operatingsystemmajrelease == 5 ) {
-    $os = 'CentOS'
-    $releasever = '$releasever'
-  } elsif ( $::operatingsystem == 'OracleLinux' ) {
-    $os = 'CentOS'
-    $releasever = '$releasever'
+  } elsif ( $::osfamily == 'RedHat' ) {
+      if $facts['os']['distro']['id'] == 'Rocky' {
+        $os = 'rocky'
+      } else {
+        $os = 'centos'
+      }
   } else {
     $os = $::operatingsystem
+  }
+
+  if $releasever == undef {
     $releasever = '$releasever'
   }
 
   yumrepo { 'duosecurity':
     descr    => 'Duo Security Repository',
-    baseurl  => "${repo_uri}/centos-${releasever}/duosecurity",
+    baseurl  => "${repo_uri}/${os}-${releasever}/duosecurity",
     gpgcheck => '0',
     enabled  => '1',
   }

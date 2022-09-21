@@ -23,7 +23,7 @@ class duo_unix::yum {
     $os = 'centos'
     $releasever = '$releasever'
   } elsif ( $::operatingsystem == 'RedHat' ) {
-      if $facts['os']['distro'['id'] == 'Rocky' {
+      if $facts['os']['distro']['id'] == 'Rocky' {
         $os = 'rocky'
         $releasever = $::operatingsystemmajrelease
       }

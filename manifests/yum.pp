@@ -19,7 +19,9 @@ class duo_unix::yum {
     }
     $os = $::operatingsystem
   } elsif ( $::osfamily == 'RedHat' ) {
-      if $facts['os']['distro']['id'] == 'Rocky' {
+      if $facts['os']['name'] == 'CentOS' {
+        $os = 'centos'
+      } elsif $facts['os']['distro']['id'] == 'Rocky' {
         $os = 'rocky'
       } else {
         $os = 'centos'

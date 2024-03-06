@@ -23,6 +23,8 @@ class duo_unix::yum {
         $os = 'centos'
       } elsif $facts['os']['distro']['id'] == 'Rocky' {
         $os = 'rocky'
+      } elsif $facts['os']['distro']['id'] == 'AlmaLinux' {
+        $os = 'rocky'
       } else {
         $os = 'centos'
       }

@@ -19,15 +19,15 @@ class duo_unix::yum {
     }
     $os = $::operatingsystem
   } elsif ( $::osfamily == 'RedHat' ) {
-      if $facts['os']['name'] == 'CentOS' {
-        $os = 'centos'
-      } elsif $facts['os']['distro']['id'] == 'Rocky' {
-        $os = 'rocky'
-      } elsif $facts['os']['distro']['id'] == 'AlmaLinux' {
-        $os = 'rocky'
-      } else {
-        $os = 'centos'
-      }
+    if $facts['os']['name'] == 'CentOS' {
+      $os = 'centos'
+    } elsif $facts['os']['distro']['id'] == 'Rocky' {
+      $os = 'rocky'
+    } elsif $facts['os']['distro']['id'] == 'AlmaLinux' {
+      $os = 'rocky'
+    } else {
+      $os = 'centos'
+    }
   } else {
     $os = $::operatingsystem
   }
@@ -49,9 +49,8 @@ class duo_unix::yum {
     }
   }
 
-  package {  $duo_unix::duo_package:
+  package { $duo_unix::duo_package:
     ensure  => $package_state,
-    require => Yumrepo['duosecurity'] ;
+    require => Yumrepo['duosecurity'];
   }
-
 }

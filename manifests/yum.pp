@@ -41,6 +41,7 @@ class duo_unix::yum {
     baseurl  => "${repo_uri}/${os}-${releasever}/duosecurity",
     gpgcheck => '0',
     enabled  => '1',
+    priority => '1',
   }
 
   if $duo_unix::manage_ssh {
